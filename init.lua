@@ -243,6 +243,12 @@ require('lazy').setup({
   --    require('gitsigns').setup({ ... })
   --
   -- See `:help gitsigns` to understand what the configuration keys do
+  {
+    'nvim-tree/nvim-tree.lua', version = '*', dependencies = { 'nvim-tree/nvim-web-devicons' }, config = function()
+      require('nvim-tree').setup {}
+      vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle File Explorer' })
+    end 
+  },
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
