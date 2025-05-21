@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -244,10 +244,14 @@ require('lazy').setup({
   --
   -- See `:help gitsigns` to understand what the configuration keys do
   {
-    'nvim-tree/nvim-tree.lua', version = '*', dependencies = { 'nvim-tree/nvim-web-devicons' }, config = function()
+    'nvim-tree/nvim-tree.lua',
+    version = '*',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    enabled = vim.g.have_nerd_font,
+    config = function()
       require('nvim-tree').setup {}
       vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle File Explorer' })
-    end 
+    end,
   },
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
